@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+    <script>
+    //JavaScript
+    document.addEventListener("contextmenu", function(e){
+        //该函数侦听了右键，并且阻止用户的操作
+        e.preventDefault();//禁止右键操作
+        alert("请您不要使用右键，开发一个网站也是很不容易的，请不要您白嫖代码。谢谢！如果需要源代码的话可以联系我！");
+    });
+    document.addEventListener('copy', function(e) {
+        //该函数侦听了复制，并且阻止用户的操作
+        e.preventDefault();//禁止复制操作
+        alert("请您不要使用复制操作，开发网站也是很不容易的，请您不要白嫖代码。谢谢！如果需要源代码可以联系我");
+    });
+    // 检测Canvas支持（上网上找的检测html5的方法）
+    if (!!document.createElement('canvas').getContext) {
+
+    } else {
+        alert("检测到您的浏览器不支持html5，请使用支持html5的浏览器！");
+    }
+    </script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SYSTEMsongxiaofan的博客 | 主页</title>
     <style>
         /* 基础样式 */
+        /* 这部分是css，比较难写，我参考了一下网上的 */
         * {
             margin: 0;
             padding: 0;
@@ -177,6 +197,14 @@
             margin-bottom: 30px;
         }
 
+        .sidebar-posts {
+            background :white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15 px  rgba(0,0,0,0.08);
+            padding: 25px;
+            margin-bottom : 30px;
+        }
+
         .widget-title {
             font-size: 18px;
             margin-bottom: 20px;
@@ -322,15 +350,14 @@
     <div class="container">
         <div class="header-content">
             <div class="logo">
-                <h1>SYSTEMsongxiaofan的<span>博客</span></h1>
+                <h1>SYSTEMsongxiaofan<span>的博客</span></h1>
             </div>
             <nav>
                 <ul>
-                    <li><a href=" " class="active">首页</a ></li>
-                    <li><a href="https://systemsongxiaofan.github.io/escctrl">信息课脱控大师</a ></li>
-                    <li><a href="https://systemsongxiaofan.github.io/3Dgame">3D漫游小游戏</a ></li>
-                    <li><a href="person.html">个人简介（正在开发）</a ></li>
-                    <li><a href="https://hydro.ac/d/songxiaofanoj">我的OJ(基于hydro)</a ></li>
+                    <li><a href="index.html" class="active">我的博客</a></li>
+                    <li><a href="https://systemsongxiaofan.github.io/escctrl">信息课脱控大师</a></li>
+                    <li><a href="https://systemsongxiaofan.github.io/3Dgame">3D漫游小游戏</a></li>
+                    <li><a href="https://hydro.ac/d/songxiaofanoj/">我的OJ(基于hydro)</a></li>
                 </ul>
             </nav>
         </div>
@@ -340,6 +367,74 @@
 <!-- 主要内容区 -->
 <div class="container">
     <div class="main-content">
+        <div class="sidebar-widget">
+                    <h3 class="widget-title">本站概述</h3>
+                    <p>本站已运行：一年
+                        <br>
+                        <br>本站是<strong>SYSTEMsongxiaofan</strong>的<strong>个人博客</strong>
+                        <br>
+                        <br>基于SYSTEMsongxiaofan开发的：
+                        <br>SYSTEMsongxiaofanblog2.0
+                        <br>
+                        <br>本站为SYSTEMsongxiaofan<strong>自主研发</strong>
+                        <br>
+                        <br>
+                    </p>
+                    <h3 class="widget-title">个性签名</h3>
+                    <p>昔我往矣，杨柳依依。
+                        <br>今我来思，雨雪霏霏。
+                        <br>
+                        <br>
+                    </p>
+                    <h3 class="widget-title">建站帮助</h3>
+                    <p>你可以使用SYSTEMsongxiaofanblog
+                        <br>创建简易静态博客网站，但是在创建
+                        <br>之前，请在github上点一个五角星！
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </p>
+                    <h3 class="widget-title">开发背景</h3>
+                    <p>上信息课被屏幕广播是一件很烦人的
+                        <br>事情。所以我开发了这样的一个工具。
+                        <br>让脱控变得简单。
+                        <br>
+                        <br><strong><b>开发者严正声明：</b></strong>
+                        <br><b>本软件仅供娱乐，在课堂上使用产生</b>
+                        <br><b>任何后果均为使用者承担！</b>
+                        <br>
+                        <br>
+                        <br>
+                    </p>
+                    <h3 class="widget-title">使用须知</h3>
+                    <p>本站展示的一切产品均为开源项目，
+                        <br>获取源代码请从官方途径获取，
+                        <br>联系我就是官方途径。
+                        <br>
+                        <br>使用本站中的产品造成的后果
+                        <br>均为使用者承担！
+                        <br>
+                        <br>使用我开发的blog框架需要在
+                        <br>网站底部加上：
+                        <br>
+                        <br><b>Powered by SYSTEMsongxiaofanblog</b>
+                        <br>
+                        <br>前面加不加©随便。
+                        <br>
+                        <br>
+                    </p>
+                    <h3 class="widget-title">避坑声明</h3>
+                    <p>获取我的产品请认准<strong>本网站</strong>，或<strong>本网
+                        <br>提供的联系方式</strong>。
+                        <br>任何以<storng>非本网站</storng>上提供的联系方式
+                        <br>为名义的都是<strong>假冒产品</strong>！
+                        <br>
+                    </p>
+                </div>
         <!-- 产品列表 -->
         <div class="products">
             <!-- 产品1 -->
@@ -352,9 +447,9 @@
                         <span>文件大小: 1.8MB</span>
                     </div>
                     <h2 class="product-title">3D漫游小游戏</h2>
-                    <p class="product-description">SYSTEMsongxiaofan开发的3D漫游小游戏</p >
+                    <p class="product-description">SYSTEMsongxiaofan开发的3D漫游小游戏，本小游戏使用raylib和c++语言开发，是一个制作3D游戏的基本框架。获取源代码请联系我。</p>
                     <div class="product-actions">
-                        <a href="https://systemsongxiaofan.github.io/3Dgame" class="download-btn">查看详情</a >
+                        <a href="https://systemsongxiaofan.github.io/3Dgame" class="download-btn">查看该产品的网站</a>
                     </div>
                 </div>
             </div>
@@ -362,17 +457,60 @@
                 <div class="product-image" style="background-image: url('https://cdn.luogu.com.cn/upload/image_hosting/hy2tbeca.png')"></div>
                 <div class="product-content">
                     <div class="product-meta">
-                        <span>版本 1.00</span>
-                        <span>更新日期: 2025-12-13</span>
+                        <span>版本 4.00</span>
+                        <span>更新日期: 2026-3-16</span>
                         <span>文件大小: 1.8MB</span>
                     </div>
                     <h2 class="product-title">信息课脱控大师</h2>
-                    <p class="product-description">上信息课被控制？不存在的！</p >
+                    <p class="product-description">目前，信息课脱控大师分为4个版本。
+                        <br> 1.信息课脱控大师WindowsAPI版本 
+                        <br> 2.信息课脱控大师专业人士版 
+                        <br> 3.信息课脱控大师raygui版 
+                        <br> 4.信息课脱控大师NEXT 
+                        <br> 由于本人比较懒，所以我在信息课脱控大师的网站上只上传了第一个版本。
+                        <br> 第一个版本很简单，只有一个功能：一键脱控。可以杀死极域和锐捷·云课堂 
+                        <br> 由于本蒟蒻懒得运维，直接在github上托管，修改一次很麻烦，所以信息课脱控大师的产品网站不再更新，可以在本站下载 
+                        <br>至于其他几个版本的下载什么时候做好，我就不知道了，毕竟我没有VPN，访问一次github很麻烦的……
+                        <br>
+                        <br>更新日志：
+                        <br>1. 2025年12月13日，信息课脱控大师WindowsAPI版本发布。
+                        <br>2. 2026年1月2日，信息课脱控大师专业人士版（控制台版）发布。
+                        <br>3. 2026年2月5日，信息课脱控大师raygui版发布。
+                        <br>4. 2026年3月16日，信息课脱控大师NEXT发布。
+                        <br>
+                        <br>常见问题：
+                        <br>由于本软件的脱控原理依赖于cstdilb中的system()函数，所以后面的两个版本在脱控的时候都会出现控制台，由于本蒟蒻不怎么懂Win32，所以没法去掉。请各位巨佬见谅！
+                        <br>
+                        <br><strong><b>重要提示</b></strong>：信息课脱控大师产品网站即将被弃用，新的下载地址即将做好。
+                        <br>届时我将不再提供信息课脱控大师产品网站的地址和连接，如果需要使用，请事先保存网址！
+                    </p>
                     <div class="product-actions">
-                        <a href="https://systemsongxiaofan.github.io/escctrl" class="download-btn">查看详情</a >
+                        <a href="https://systemsongxiaofan.github.io/escctrl" class="download-btn">查看详情（目前这个地址只能下载第一个版本）</a>
                     </div>
                 </div>
             </div>
+
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://cdn.luogu.com.cn/upload/image_hosting/9b4psniz.png')"></div>
+                <div class="product-content">
+                    <div class="product-meta">
+                        <span>版本 2.00</span>
+                        <span>发布日期: 2026-3-26</span>
+                    </div>
+                    <h2 class="product-title">SYSTEMsongxiaofanblog</h2>
+                    <p class="product-description">一种<b><strong>简单</strong></b>且<b><strong>易用</strong></b>的静态博客框架。
+                        <br>
+                        <br>使用html+JavaScript+css构建的博客框架
+                        <br>2025年11月25日，SYSTEMsongxiaofanblog框架正式发布，只是一个基于css和html的纯静态网站，没有任何特效
+                        <br>2026年3月28日，SYSTEMsongxiaofanblog2.0框架正式发布，加入了JavaScript防复制函数，并优化了html
+                        <br>其实2.00版本最主要的升级就是加入了JavaScript和文章功能
+                    </p>
+                    <div class="product-actions">
+                        <a href="https://yun.139.com/w/#/index" class="download-btn">下载（目前只能下载1.0版本）</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="product-card">
                 <div class="product-image" style="background-image: url('https://cdn.luogu.com.cn/upload/image_hosting/g6e1jg65.png')"></div>
                 <div class="product-content">
@@ -382,9 +520,12 @@
                         <span>文件大小: 1.8MB</span>
                     </div>
                     <h2 class="product-title">有理数计算神器</h2>
-                    <p class="product-description">专为初中学生党开发，解放你的大脑！</p >
+                    <p class="product-description">专为初中学生党开发，解放你的大脑！
+                        <br>至于这玩意儿，就是我在上初一上学期的时候，因为有理数计算而头痛，就编了一个这玩意儿。
+                        <br>很简陋，所以我在这里就不提供下载了
+                    </p>
                     <div class="product-actions">
-                        <a href="https://yun.139.com/w/#/index" class="download-btn">下载（暂时无法使用）</a >
+                        <a href="https://yun.139.com/w/#/index" class="download-btn">下载（暂时无法使用）</a>
                     </div>
                 </div>
             </div>
@@ -395,37 +536,54 @@
             <!-- 侧边栏 -->
             <div class="sidebar">
                 <div class="sidebar-widget">
-                    <h3 class="widget-title">关于我</h3>
-                    <p>SYSTEMsongxiaofan</p >
-                    <p>地址：山东</p >
-                    <p>爱好：编程,OI</p >
-                    <p>一名蒟蒻OIER,热爱开发各种软件</p >
-                    <p></p >
+                    <h3 class="widget-title">个人简介</h3>
+                    <p>我， SYSTEMsongxiaofan</p>
+                    <p>我是一名蒟蒻的不能再蒟蒻的OIER，洛谷只是一个橙名。</p>
+                    <p>由于OI太难，所以我学习OI也产生了很多副产品。</p>
+                    <p>我自学了一些库，搞了上面几个软件。</p>
+                    <p>我只是一名喜欢编程的初中生，技术有限，还请见谅！</p>
+                </div>
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">本站更新日志</h3>
+                    <p>本站于<strong>2025年11月25日</strong>上线 
+                        <br>于<strong>2026年1月3日</strong>上线信息课脱控大师网站
+                        <br>于<strong>2026年3月2日</strong>上线3D计算小游戏网站
+                        <br>于<strong>2026年3月28日</strong>进行首个大版本更新，同时信息课脱控大师网站和3D计算小游戏网站正式弃用
+                    </p>
                 </div>
 
                 <div class="sidebar-widget">
                     <h3 class="widget-title">产品菜单</h3>
                     <ul class="categories-list">
-                        <li><a href="#">有理数计算神器，信息课脱控大师,3D漫游小游戏</a ></li>
+                        <li><a href="#">有理数计算神器，信息课脱控大师,3D漫游小游戏</a></li>
                     </ul>
                 </div>
 
+                
                 <div class="sidebar-widget">
-                    <h3 class="widget-title">热门产品</h3>
-                    <ul class="popular-posts">
-                        <li><a href="#">信息课脱控大师，3D漫游小游戏</a ></li>
+                    <h3 class="widget-title">文章列表</h3>
+                    <ul class="categories-list">
+                        <li><a href="https://systemsongxiaofan.github.io/article">raylib和raygui基础教程（我自己的页面）</a></li>
+                        <li><a href="https://hydro.ac/d/songxiaofanoj/blog/121144/69d3a118051f80a45086d3eb">raylib和raygui基础教程（我的hydro博客）</a></li>
                     </ul>
                 </div>
+                <!-- <div class="sideber-widget">
+                    <h3 class="widget-title">文章列表</h3>
+                    <ul class="popular-posts">
+                        <li><a href="#">raylib和raygui基础教程</a></li>
+                    </ul>
+                </div> -->
 
                 <div class="sidebar-widget">
                     <h3 class="widget-title">技术标签</h3>
                     <div class="tag-cloud">
-                        <a href="#" class="tag">JavaScript</a >
-                        <a href="#" class="tag">Python</a >
-                        <a href="#" class="tag">c++</a >
-                        <a href="#" class="tag">html</a >
-                        <a href="#" class="tag">开源</a >
-                        <a href="#" class="tag">WindowsAPI</a >
+                        <a href="#" class="tag">JavaScript</a>
+                        <a href="#" class="tag">Python</a>
+                        <a href="#" class="tag">c++</a>
+                        <a href="#" class="tag">html</a>
+                        <a href="#" class="tag">开源</a>
+                        <a href="#" class="tag">WindowsAPI</a>
+                        <a herf="#" class="tag">raylib</a>
                     </div>
                 </div>
             </div>
@@ -437,14 +595,17 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>关于博客</h3>
-                    <p>本网站为SYSTEMsongxiaofan的个人博客网站，展示SYSTEMsongxiaofan的产品</p >
+                    <h3>关于本网站</h3>
+                    <p>本网站为SYSTEMsongxiaofan的个人博客。
+                        <br>基于SYSTEMsongxiaofanblog框架2.0版本构建。
+                    </p>
                 </div>
                 <div class="footer-column">
                     <h3>快速链接</h3>
                     <ul class="footer-links">
-                        <li><a href="https://systemsongxiaofan.github.io/escctrl">信息科脱控大师</a ></li>
-                        <li><a href="https://systemsongxiaofan.github.io/3Dgame">3D漫游小游戏</a ></li>
+                        <li><a href="https://systemsongxiaofan.github.io/escctrl">信息课脱控大师网站（已弃用）</a></li>
+                        <li><a href="https://systemsongxiaofan.github.io/3Dgame">3D漫游小游戏（已弃用）</a></li>
+                        <li><a href="https://hydro.ac/d/songxiaofanoj/">我的OJ（基于Hydro）</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -453,13 +614,15 @@
                         <li>邮箱: songxiaofan2026@outlook.com</li>
                         <li>GitHub: github.com/SYSTEMsongxiaofan</li>
                         <li>电话：18766279126</li>
-                        <li>QQ:3274370036</li>
+                        <li>QQ: 3274370036</li>
                         <li>洛谷：SYSTEMsongxiaofan</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2026 SYSTEMsongxiaofan的博客. 保留所有权利.</p >
+                <p>&copy; 2025-2026 SYSTEMsongxiaofan的博客。保留所有权利。</p>
+                <p>&copy; Powered by SYSTEMsongxiaofanblog 2.0</p>
+                <p>&copy; Verson:2.00</p>
             </div>
         </div>
     </footer>
