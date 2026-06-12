@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSTEMsongxiaofan的博客 | 文章</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'HarmonyOS Sans SC', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: #2c3e50;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #3498db;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部样式 */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo span {
+            color: #3498db;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        nav a.active {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+        }
+
+        /* 主要内容区 */
+        .main-content {
+            display: flex;
+            margin: 40px 0;
+            gap: 40px;
+        }
+
+        .products {
+            flex: 2;
+        }
+
+        .sidebar {
+            flex: 1;
+        }
+
+        /* 产品卡片样式 */
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-content {
+            padding: 25px;
+        }
+
+        .product-meta {
+            display: flex;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .product-meta span {
+            margin-right: 15px;
+        }
+
+        .product-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #2980b9;
+        }
+
+        .learn-more {
+            display: inline-block;
+            color: #3498db;
+            font-weight: 500;
+        }
+
+        /* 侧边栏样式 */
+        .sidebar-widget {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .widget-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f1f1f1;
+        }
+
+        .categories-list, .popular-posts {
+            list-style: none;
+        }
+
+        .categories-list li, .popular-posts li {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .categories-list li:last-child, .popular-posts li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #f1f1f1;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: #3498db;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #bdc3c7;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-column {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+
+            nav li {
+                margin: 0 10px;
+            }
+
+            .product-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 头部 -->
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <h1>SYSTEMsongxiaofan的<span>文章页面</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="" class="active">文章页面</a></li>
+                    <li><a href="https://systemsongxiaofan.github.io/songxiaofanblog" >我的博客主页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!-- 主要内容区 -->
+<div class="container">
+    <div class="main-content">
+            <!-- 侧边栏 -->
+            <div class="sidebar">
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">SYSTEMsongxiaofanblog2.0，更快更强的静态博客框架！</h1>
+                    <p>
+                        SYSTEMsongxiaofanblog2.0是SYSTEMsongxiaofan开发的新型<b><strong>静态</strong></b>博客框架。
+                        <br><strong>更快</strong>
+                        <br>无需加载.css和外部.js，纯静态页面，访问速度快如闪电！
+                        <br>
+                        <br><strong>更强</strong>
+                        <br>虽是单一.html，但是加入了强大的JavaScript技术，防止用户白嫖代码！
+                        <br>index.html加入了JS拦截右键，拦截复制等一系列智能技术，使网站的代码🔒在了保险箱中！
+                        <br>
+                        <br><strong>更美观</strong>
+                        <br>采取圆角风格设计，全面支持UTF-8，全面支持表情符号。
+                        <br>配色方案简约大气，让博客与众不同！
+                        <br>
+                        <br><strong>更多功能</strong>
+                        <br>主页加入侧边栏设计，加入文章功能，和原来的产品功能形成搭配，使网站更有亮点！
+                        <br>最后，给这个框架点100个👍！
+                    </p>
+
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">技术标签</h3>
+                    <div class="tag-cloud">
+                        <a href="" class="tag">html</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于博客</h3>
+                    <p>本网站是SYSTEMsongxiaofan博客的子网站，展示博文</p>
+                </div>
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://systemsongxiaofan.github.io/songxiaofanblog">SYSTEMsongxiaofan的博客主页</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025-2026 SYSTEMsongxiaofan的博客。 保留所有权利</p>
+                <p>&copy; powered by SYSTEMsongxiaofanblog2.0</p>
+                <p>&copy; Verson:1.00</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

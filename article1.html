@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSTEMsongxiaofan的博客 | 文章</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'HarmonyOS Sans SC', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: #2c3e50;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #3498db;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部样式 */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .logo span {
+            color: #3498db;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        nav a.active {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+        }
+
+        /* 主要内容区 */
+        .main-content {
+            display: flex;
+            margin: 40px 0;
+            gap: 40px;
+        }
+
+        .products {
+            flex: 2;
+        }
+
+        .sidebar {
+            flex: 1;
+        }
+
+        /* 产品卡片样式 */
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-content {
+            padding: 25px;
+        }
+
+        .product-meta {
+            display: flex;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .product-meta span {
+            margin-right: 15px;
+        }
+
+        .product-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #2980b9;
+        }
+
+        .learn-more {
+            display: inline-block;
+            color: #3498db;
+            font-weight: 500;
+        }
+
+        /* 侧边栏样式 */
+        .sidebar-widget {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .widget-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f1f1f1;
+        }
+
+        .categories-list, .popular-posts {
+            list-style: none;
+        }
+
+        .categories-list li, .popular-posts li {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .categories-list li:last-child, .popular-posts li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #f1f1f1;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: #3498db;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #bdc3c7;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-column {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+
+            nav li {
+                margin: 0 10px;
+            }
+
+            .product-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 头部 -->
+<script>
+    let password = prompt("请输入资源激活码：", "例：1234567");
+    console.log(password);
+    if(!(password=="a18766279126_")){
+        alert("近日，某人利用本网站的漏洞获取本文章的源码。为确保此类情况不再发生，SYSTEMsongxiaofan对本文进行了加密，请您向开发者免费获取激活码！")
+        alert("请您先退出本网页，谢谢配合！");
+        location.replace("index.html");
+    }
+    document.addEventListener("contextmenu", function(e){
+        //该函数侦听了右键，并且阻止用户的操作
+        e.preventDefault();//禁止右键操作
+        alert("请您不要使用右键，开发一个网站也是很不容易的，请不要您白嫖代码。谢谢！如果需要源代码的话可以联系我！");
+    });
+    document.addEventListener('copy', function(e) {
+        //该函数侦听了复制，并且阻止用户的操作
+        e.preventDefault();//禁止复制操作
+        alert("请您不要使用复制操作，开发网站也是很不容易的，请您不要白嫖代码。谢谢！如果需要源代码可以联系我");
+    });
+    // 检测Canvas支持（上网上找的检测html5的方法）
+    if (!!document.createElement('canvas').getContext) {
+
+    } else {
+        alert("检测到您的浏览器不支持html5，请使用支持html5的浏览器！");
+    }
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
+            event.preventDefault();
+            alert("请您不要使用开发者工具！");
+        }
+    });
+</script>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <h1>SYSTEMsongxiaofan的<span>文章页面</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="" class="active">文章页面</a></li>
+                    <li><a href="https://systemsongxiaofan.github.io/songxiaofanblog" >我的博客主页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!-- 主要内容区 -->
+<div class="container">
+    <div class="main-content">
+            <!-- 侧边栏 -->
+            <div class="sidebar">
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">raylib和raygui基本教程</h3>
+                    <p>本蒟蒻不会写markdown解释器，这篇文章又是从我的洛谷博客上耗下来的，所以观感不佳，很大一部分都保留了markdown语法，请见谅。
+                        <br>我不能保证这是全网第几篇，但是这一定是全网比较全的了。
+                        <br>至于图片，你就自己访问网址吧。
+                        <br>
+                        <br>
+                        <p>这应该是洛谷第n篇关于<strong>raylib</strong>和<strong>raygui</strong>的文章了，n是一个未知数，表明我也不知道有几篇。<br>
+咱们废话少说，进入正题。<br>
+这是基础篇，后面还会有中级篇和高级篇。<br>
+## 首先，raylib和raygui是干什么的？<br>
+raylib是一个轻量级的，十分易用的制作2D或3D游戏或视频的库，raygui则是raylib的补充，也就是为游戏创作GUI界面的。既然是GUI，代码量肯定不小。但是我要告诉你，raygui的代码量非常小，小到什么程度那？<br>
+```cpp<br>
+InitWindow(参数1，参数2，参数3)；<br>
+```<br>
+这一行代码，就可以创建一个窗口。但是不代表生成的.exe可以运行。<br>
+反观隔壁WindowsAPI,就写一个窗口，就要:<br>
+```cpp<br>
+#include &lt;windows.h&gt;<br>
+<br>
+/* 在这里处理所有的窗口消息（包括输入） */<br>
+LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam) {<br>
+	switch(Message) {<br>
+		<br>
+		/* 销毁（关闭）窗口时，让主线程退出 */<br>
+		case WM_DESTROY: {<br>
+			PostQuitMessage(0);<br>
+			break;<br>
+		}<br>
+		<br>
+		/* 使用默认的输出过程来处理所有其他消息 */<br>
+		default:<br>
+			return DefWindowProc(hwnd, Message, wParam, lParam);<br>
+	}<br>
+	return 0;<br>
+}<br>
+<br>
+/* Win32 GUI程序的“main”函数：程序从这里开始执行 */<br>
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {<br>
+	WNDCLASSEX wc;	/* 用于设置窗口的属性 */<br>
+	HWND hwnd; 		/* 我们的窗口句柄（H代表handle（句柄），WND代表windows（窗口）） */<br>
+	MSG msg; 		/* 用于临时保存收到的消息 */<br>
+<br>
+	/* 先将整个结构全部置零，然后再设置需要的字段 */<br>
+	memset(&amp;wc,0,sizeof(wc));<br>
+	wc.cbSize		 = sizeof(WNDCLASSEX);<br>
+	wc.lpfnWndProc	 = WndProc; /* This is where we will send messages to */<br>
+	wc.hInstance	 = hInstance;<br>
+	wc.hCursor		 = LoadCursor(NULL, IDC_ARROW);<br>
+	<br>
+	/* COLOR_WINDOWS+1为白色。Ctrl+鼠标左键点击COLOR_WINDOW可以查看它的定义 */<br>
+	wc.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);<br>
+	wc.lpszClassName = "WindowClass";<br>
+	wc.hIcon		 = LoadIcon(NULL, IDI_APPLICATION); /* 加载标准图标 */<br>
+	wc.hIconSm		 = LoadIcon(NULL, IDI_APPLICATION); /* 加载标准图标 */<br>
+<br>
+	if(!RegisterClassEx(&amp;wc)) {<br>
+		MessageBox(NULL, "Window Registration Failed!","Error!",MB_ICONEXCLAMATION|MB_OK);<br>
+		return 0;<br>
+	}<br>
+<br>
+	hwnd = CreateWindowEx(WS_EX_CLIENTEDGE,"WindowClass","Caption",WS_VISIBLE|WS_OVERLAPPEDWINDOW,<br>
+		CW_USEDEFAULT, /* x */<br>
+		CW_USEDEFAULT, /* y */<br>
+		640, /* 窗口宽度 */<br>
+		480, /* 窗口高度 */<br>
+		NULL,NULL,hInstance,NULL);<br>
+<br>
+	if(hwnd == NULL) {<br>
+		MessageBox(NULL, "Window Creation Failed!","Error!",MB_ICONEXCLAMATION|MB_OK);<br>
+		return 0;<br>
+	}<br>
+<br>
+	/*<br>
+	  这里是我们程序的核心部分。所有的消息（包括输入）都通过这个循环<br>
+	  调用WndProc函数处理。注意GetMessage会程序暂时休眠，直到它收到<br>
+	  任意消息为止。所以这个循环不会导致过高的占用CPU。<br>
+	*/<br>
+	while(GetMessage(&amp;msg, NULL, 0, 0) &gt; 0) { /* 如果没有发生错误，且收到了任意消息... */<br>
+		TranslateMessage(&amp;msg); /* 将消息中的键盘码转换为对应的字符 */<br>
+		DispatchMessage(&amp;msg); /* 调用WndProc函数处理消息 */<br>
+	}<br>
+	return msg.wParam;<br>
+}<br>
+```<br>
+你可能会问我，为什么注释写得这么奇怪？  因为我其实也不会Win32API!   这段代码实际上是IDE自带的。<br>
+<br>
+当然了，Win32API不在我们讨论的范畴内，我们还是回归正题。<br>
+<br>
+写一个最简单的raygui程序的示例：<br>
+<br>
+```cpp<br>
+#include &lt;raylib.h&gt;<br>
+#define RAYGUI_IMPLEMENTATION<br>
+#include &lt;raygui.h&gt;<br>
+int main(){<br>
+	InitWindow(1500,750,"raygui示例");<br>
+	while(!WindowShouldClose()){<br>
+		BeginDrawing();<br>
+		ClearBackground(WHITE);<br>
+		EndDrawing();<br>
+	}<br>
+	return 0;<br>
+}<br>
+```<br>
+运行结果如下：<br>
+![](https://cdn.luogu.com.cn/upload/image_hosting/zeik72hj.png)<br>
+是不是看起来比Win32API简单很多啊？<br>
+<br>
+## 开发环境<br>
+首先，我们需要配置好开发环境，这里不详细介绍。这里我还是推荐一个IDE——懒人专用 小熊猫C++。小熊猫C++的编译器include目录和libs目录已经为我们预置了raylib和raygui库文件和头文件。<br>
+<br>
+[小熊猫C++下载链接](http://royqh.net/redpandacpp/download/)<br>
+<br>
+## 基础<br>
+我们先对raygui中的基础常用函数进行介绍，掌握GUI的开发，是一切的基础。<br>
+<br>
+#### 窗口创建<br>
+```cpp<br>
+#include &lt;raylib.h&gt;//头文件，注意是c语言的.h<br>
+//第3行是进行预编译，具体原理无需深究，正常写代码仅需知道使用raygui.h必须加就可以<br>
+#define RAYGUI_IMPLEMENTATION<br>
+#include &lt;raygui.h&gt;//注意！raygui.h是基于raylib的所以必须先包含raylib.h在包含raygui.h<br>
+int main(){<br>
+	<br>
+	InitWindow(1500,750,"raygui示例");//这个函数创建了一个窗口，第一个参数为长，第二个参数为高，第三个参数为窗口标题<br>
+	<br>
+	while(!WindowShouldClose()){<br>
+		//主消息循环，所有gui都是从这里实现的<br>
+		BeginDrawing();<br>
+		ClearBackground(WHITE);//将窗口背景设为白色<br>
+		EndDrawing();<br>
+		//BeginDrawing()和EndDrawing()两个函数可以理解为BeginDrawing()是每一帧绘制的开始，而EndDrawing()是这一帧的结束<br>
+	}<br>
+	<br>
+	return 0;<br>
+}<br>
+```<br>
+这个代码已经注释好了，接下来我会逐一讲解用到的函数。<br>
+<br>
+1.WindowShouldClose()函数<br>
+<br>
+```cpp<br>
+WindowShouldClose()<br>
+```<br>
+这个函数就是用于侦测窗口是否被人为关闭，原型如下：<br>
+```cpp<br>
+bool WindowShouldClose(void);  <br>
+```<br>
+括号内不传入任何参数，只是作为主消息循环的结束条件。<br>
+<br>
+2.BeginDrawing()函数<br>
+```cpp<br>
+BeginDrawing()<br>
+```<br>
+这个函数就是用于开始某一帧的绘制，原型如下:<br>
+```cpp<br>
+void BeginDrawing(void)<br>
+```<br>
+这个函数必须和EndDrawing()成对使用，也就是一帧要有始有终。<br>
+<br>
+3.ClearBackground()函数<br>
+```cpp<br>
+ClearBackground(参数1)<br>
+```<br>
+这个函数就是将窗口的背景颜色设为括号内参数的颜色。原型如下：<br>
+```cpp<br>
+void ClearBackground(Color color)<br>
+```<br>
+Color是raylib中的自定义类型，也就是颜色。<br>
+<br>
+raylib头文件中对于不同颜色的定义如下：<br>
+```cpp<br>
+#define LIGHTGRAY  CLITERAL(Color){ 200, 200, 200, 255 }   // Light Gray<br>
+#define GRAY       CLITERAL(Color){ 130, 130, 130, 255 }   // Gray<br>
+#define DARKGRAY   CLITERAL(Color){ 80, 80, 80, 255 }      // Dark Gray<br>
+#define YELLOW     CLITERAL(Color){ 253, 249, 0, 255 }     // Yellow<br>
+#define GOLD       CLITERAL(Color){ 255, 203, 0, 255 }     // Gold<br>
+#define ORANGE     CLITERAL(Color){ 255, 161, 0, 255 }     // Orange<br>
+#define PINK       CLITERAL(Color){ 255, 109, 194, 255 }   // Pink<br>
+#define RED        CLITERAL(Color){ 230, 41, 55, 255 }     // Red<br>
+#define MAROON     CLITERAL(Color){ 190, 33, 55, 255 }     // Maroon<br>
+#define GREEN      CLITERAL(Color){ 0, 228, 48, 255 }      // Green<br>
+#define LIME       CLITERAL(Color){ 0, 158, 47, 255 }      // Lime<br>
+#define DARKGREEN  CLITERAL(Color){ 0, 117, 44, 255 }      // Dark Green<br>
+#define SKYBLUE    CLITERAL(Color){ 102, 191, 255, 255 }   // Sky Blue<br>
+#define BLUE       CLITERAL(Color){ 0, 121, 241, 255 }     // Blue<br>
+#define DARKBLUE   CLITERAL(Color){ 0, 82, 172, 255 }      // Dark Blue<br>
+#define PURPLE     CLITERAL(Color){ 200, 122, 255, 255 }   // Purple<br>
+#define VIOLET     CLITERAL(Color){ 135, 60, 190, 255 }    // Violet<br>
+#define DARKPURPLE CLITERAL(Color){ 112, 31, 126, 255 }    // Dark Purple<br>
+#define BEIGE      CLITERAL(Color){ 211, 176, 131, 255 }   // Beige<br>
+#define BROWN      CLITERAL(Color){ 127, 106, 79, 255 }    // Brown<br>
+#define DARKBROWN  CLITERAL(Color){ 76, 63, 47, 255 }      // Dark Brown<br>
+<br>
+#define WHITE      CLITERAL(Color){ 255, 255, 255, 255 }   // White<br>
+#define BLACK      CLITERAL(Color){ 0, 0, 0, 255 }         // Black<br>
+#define BLANK      CLITERAL(Color){ 0, 0, 0, 0 }           // Blank (Transparent)<br>
+#define MAGENTA    CLITERAL(Color){ 255, 0, 255, 255 }     // Magenta<br>
+#define RAYWHITE   CLITERAL(Color){ 245, 245, 245, 255 }   // My own White (raylib logo)<br>
+```<br>
+也就是，我们在ClearBackground()函数中可以填入这里面定义的所有宏，也就是：<br>
+```markdown<br>
+LIGHTGRAY<br>
+GRAY<br>
+DARKGRAY<br>
+YELLOW<br>
+GOLD<br>
+ORANGE<br>
+PINK<br>
+RED<br>
+MARRON<br>
+GREEN<br>
+LIME<br>
+DARKGREEN<br>
+SKYBLUE<br>
+BLUE<br>
+DARKBLUE<br>
+PURPLE<br>
+VIOLET<br>
+DARKPURPLE<br>
+BEIGE<br>
+BROWN<br>
+DARKBROWN<br>
+WHITE<br>
+BLACK<br>
+BLANK<br>
+MAGENTA<br>
+RAYWHITE<br>
+```<br>
+当然，我们也可以将类似<br>
+```cpp<br>
+CLITRAL(Color){xxx,xxx,xxx,xxx}<br>
+```<br>
+作为参数传入该函数，但是笔者没有这样试过。<br>
+<br>
+4.EndDrawing()函数<br>
+<br>
+这个函数的用法上面已经介绍了，就是和BeginDrawing()配对使用。<br>
+<br>
+<strong>小结</strong>：上面介绍的几个函数，其实都是在raylib.h中的，但是这也是GUI的基础，所以笔者也将他们归于raygui了。<br>
+<br>
+#### 基础控件及文字输出<br>
+基础控件笔者在这里只想介绍一个控件，也是最常用的控件。读完这节，相信你也可以利用raygui创建简单的GUI交互界面了。<br>
+<br>
+废话少说，先上一段代码:<br>
+```cpp<br>
+#include &lt;raylib.h&gt;<br>
+#define RAYGUI_IMPLEMENTATION<br>
+#include &lt;raygui.h&gt;<br>
+<br>
+using namespace std;<br>
+<br>
+int main(){<br>
+	<br>
+	InitWindow(1500,1300,"RAYGUI示例2");<br>
+	SetTraceLogLevel(LOG_WARNING);<br>
+	<br>
+	//第13行就相当于一个字典<br>
+	const char *guitexts="1号按钮我的第一个窗口";<br>
+	//将字典中的字符转化成Unicode码点<br>
+	int codepointscount;<br>
+	int *codepoints=LoadCodepoints(guitexts,&amp;codepointscount);<br>
+	//读取字体<br>
+	Font font=LoadFontEx("C:\\Windows\\Fonts\\simhei.ttf",64,codepoints,codepointscount);<br>
+	//释放码点表<br>
+	UnloadCodepoints(codepoints);<br>
+	<br>
+	//设置控件（注意是控件！！！）的字体和大小<br>
+	GuiSetFont(font);//设置字体<br>
+	GuiSetStyle(DEFAULT,TEXT_SIZE,20);//设置字的大小<br>
+	<br>
+	while(!WindowShouldClose()){<br>
+		//主消息循环<br>
+		BeginDrawing();<br>
+		ClearBackground(WHITE);<br>
+		GuiButton((Rectangle){120,150,200,60},"1号按钮");<br>
+		DrawTextEx(font,"我的第一个窗口",Vector2{50,50},50,1,BLACK);<br>
+		EndDrawing();<br>
+	}<br>
+	//释放字体<br>
+	UnloadFont(font);<br>
+	return 0;<br>
+}<br>
+```<br>
+运行结果如下：<br>
+![](https://cdn.luogu.com.cn/upload/image_hosting/dao3q1m7.png)<br>
+你可能会问我，为什么主消息循环每一行不写注释了？<br>
+<br>
+而我会告诉你，这里的几个函数（除了已经讲过的）都是在注释中没法讲明白的。<br>
+<br>
+你还可能会问我，不是说只讲一个控件和输出文字吗？为什么在主消息循环前有这么一大堆？<br>
+<br>
+实际上，如果在GUI中使用非ASCII字符，你需要先将你需要使用的字符转化为Unicode码点。我再回答一个问题：为什么不使用DrawText()函数？因为这个函数比较鸡肋，无法自定义文字的颜色和字体，所以笔者在这里不做介绍。<br>
+<br>
+1.SetTraceLogLevel()函数<br>
+<br>
+这个函数的原理初学者不必深究，只需要知道使用raygui控件就需要在代码的头部（主函数内）加上下面这一行:<br>
+```cpp<br>
+SetTraceLogLevel(LOG_WARNING);<br>
+```<br>
+如果不加会导致链接错误。<br>
+<br>
+2.LoadCodepoints()函数<br>
+```cpp<br>
+LoadCodepoints(参数1,参数2)<br>
+```<br>
+原型为:<br>
+```cpp<br>
+int *LoadCodepoints(const char *text, int *count)<br>
+```<br>
+返回int *类型，所以我们要用一个指针来存储该函数的返回值。<br>
+<br>
+参数1传入的是一个const char *类型，可以理解为字符数组。<br>
+<br>
+参数2传入的是int *类型，所以在传入的时候笔者加了&amp;取地址符。<br>
+<br>
+3.LoadFontEx()函数<br>
+<br>
+<br>
+```cpp<br>
+LoadFontEx(参数1,参数2,参数3,参数4)<br>
+```<br>
+该函数实现了将字体载入的功能,该函数的原型为：<br>
+```cpp<br>
+Font LoadFontEx(const char *fileName, int fontSize, int *codepoints, int codepointCount)<br>
+```<br>
+参数1传入的是字体文件的路径（必须是绝对路径！！！）。<br>
+<br>
+参数2传入的是字体文件的大小。<br>
+<br>
+参数3传入的是码点表的地址（指针类型）。<br>
+<br>
+参数4传入的是字典字符串的长度。<br>
+<br>
+4.UnloadCodepoints()函数<br>
+```cpp<br>
+UnloadCodepoints(参数1)<br>
+```<br>
+该函数实现了载入字体之后将码点表释放的功能，其原型为：<br>
+```cpp<br>
+void UnloadCodepoints(int *codepoints)<br>
+```<br>
+该函数无返回值，传入一个指针类型(int *)，只是实现功能。<br>
+<br>
+参数1传入的是一个指针类型，没什么好说的。<br>
+<br>
+5.GuiSetFont()函数<br>
+```cpp<br>
+GuisetFont(参数1)<br>
+```<br>
+该函数实现的是设置GUI控件的字体，注意在窗口上输出文字或图片（使用上面介绍的DrawTextEx()函数）使用的字体是该函数的第一个参数。当然，如果使用不同的字体，也需要重新写字典并将字典转化成Unicode码点并释放码点表。<br>
+<br>
+该函数的原型如下：<br>
+```cpp<br>
+void GuiSetFont(Font font)<br>
+```<br>
+提示：Font是raylib中的<strong>自定义类型</strong>！！！<br>
+<br>
+6.GuiSetStyle()函数<br>
+```cpp<br>
+GuiSetStyle(参数1，参数2，参数3)<br>
+```<br>
+该函数实现的是设置GUI的字号。该函数的原型如下：<br>
+```cpp<br>
+void GuiSetStyle(int control, int property, int value)<br>
+```<br>
+参数1和参数2传入的值一般不进行更改，一般使用上面那段完整代码传入的两个参数<br>
+<br>
+参数3就是字号（是GUI控件的字号）<br>
+<br>
+7.GuiButton()函数<br>
+```cpp<br>
+GuiButton(参数1，参数2)<br>
+```<br>
+该函数实现的是创建一个GUI控件——按钮的功能，该函数的原型如下：<br>
+```cpp<br>
+int GuiButton(Rectangle bounds, const char *text)<br>
+```<br>
+这个函数传入的参数1的格式如下:<br>
+```cpp<br>
+(Rectangle){xxx,xxx,xxx,xxx}<br>
+```<br>
+注：这里的xxx代表的是<strong>数字</strong><br>
+<br>
+可以得知，这里的花括号中有4个数字，用逗号隔开。<br>
+<br>
+第一个数字表示你要创建的该控件在窗口中的x坐标，第二个数字表示y坐标，第三个表示按钮的长度，第四个表示按钮的高度。<br>
+<br>
+参数2相对简单，传入一个字符串（必须是常量！！！）表示按钮上书写的文字。<br>
+<br>
+在实际应用中，我们常常用变量来记录当前的状态，请看下面这段代码：<br>
+```cpp<br>
+#include &lt;raylib.h&gt;<br>
+#define RAYGUI_IMPLEMENTATION<br>
+#include &lt;raygui.h&gt;<br>
+#include &lt;iostream&gt;<br>
+<br>
+using namespace std;<br>
+<br>
+int main(){<br>
+	<br>
+	InitWindow(1500,1300,"RAYGUI示例2");<br>
+	SetTraceLogLevel(LOG_WARNING);<br>
+	<br>
+	//第13行就相当于一个字典<br>
+	const char *guitexts="1号按钮我您刚才点击了按钮的第一个窗口";<br>
+	//将字典中的字符转化成Unicode码点<br>
+	int codepointscount;<br>
+	int *codepoints=LoadCodepoints(guitexts,&amp;codepointscount);<br>
+	//读取字体<br>
+	Font font=LoadFontEx("C:\\Windows\\Fonts\\simhei.ttf",64,codepoints,codepointscount);<br>
+	//释放码点表<br>
+	UnloadCodepoints(codepoints);<br>
+	<br>
+	//设置控件（注意是控件！！！）的字体和大小<br>
+	GuiSetFont(font);//设置字体<br>
+	GuiSetStyle(DEFAULT,TEXT_SIZE,20);//设置字的大小<br>
+	cout&lt;&lt;codepointscount&lt;&lt;"\n";<br>
+	<br>
+	int choose=0;<br>
+	while(!WindowShouldClose()){<br>
+		//主消息循环<br>
+		BeginDrawing();<br>
+		ClearBackground(WHITE);<br>
+		if(choose==0&amp;&amp;GuiButton((Rectangle){1200,1000,200,60},"1号按钮")==true){<br>
+			choose=1;<br>
+		}<br>
+		if(choose==1){<br>
+			DrawTextEx(font,"您刚才点击了按钮",Vector2{50,50},50,1,BLACK);<br>
+		}<br>
+		else<br>
+			DrawTextEx(font,"我的第一个窗口",Vector2{50,50},50,1,BLACK);<br>
+		EndDrawing();<br>
+	}<br>
+	//释放字体<br>
+	UnloadFont(font);<br>
+	return 0;<br>
+}<br>
+```<br>
+这段代码实现了一个简单的GUI交互，在屏幕下方创建按钮1，点击按钮会改变屏幕上方的文字。<br>
+<br>
+8.DrawTextEx()函数<br>
+<br>
+上面两个代码都提到了DrawTextEx()函数，是因为不写这个函数人机交互的效果无法体现。在这里，笔者将系统地介绍这个函数。<br>
+```cpp<br>
+DrawTextEx(参数1，参数2，参数3，参数4，参数5，参数6)<br>
+```<br>
+这个函数实现的是在窗口的任意位置（当然窗口之外也行，不过就看不到了）输出任意字体、任意大小、任意颜色的字符串。这个函数的原型如下：<br>
+```cpp<br>
+void DrawTextEx(Font font, const char *text, Vector2 position, float fontSize, float spacing, Color tint)<br>
+```<br>
+打眼一看，似乎很复杂，但是我们可以把这个函数的6个参数分为4部分。<br>
+<br>
+第一部分：参数1：传入你需要的字体（Font）类型。<br>
+<br>
+第二部分：参数2：传入一个字符串（必须是常量），表示你要输出的文字。<br>
+<br>
+第三部分：参数3、4、5这三个参数的意义很类似，第一个是传入的raylib中的二维向量（Vector2），我们后面会介绍到。花括号中第一个数表示你要从x坐标的什么位置开始输出，第二个数表示你要从y坐标的什么位置开始输出（x,y）是右上角的坐标。参数4是每个字的边长，参数5是字与字之间的间距。<br>
+<br>
+小结：到这里我们的GUI基础部分告一段落了，利用上面的函数，已经可以创建简单的GUI了。下一部分，笔者将介绍raylib的基础（2D）。<br>
+</p>
+                    </p>
+
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">技术标签</h3>
+                    <div class="tag-cloud">
+                        <a href="" class="tag">C++</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于博客</h3>
+                    <p>本网站是SYSTEMsongxiaofan博客的子网站，展示博文</p>
+                </div>
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://systemsongxiaofan.github.io/songxiaofanblog">SYSTEMsongxiaofan的博客主页</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025-2026 SYSTEMsongxiaofan的博客。 保留所有权利</p>
+                <p>&copy; powered by SYSTEMsongxiaofanblog2.0</p>
+                <p>&copy; Verson:1.00</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
